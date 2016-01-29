@@ -3,8 +3,10 @@
 open System.Data.Entity
 open FsWeb.Models
 
-type MyContext() =
-    inherit DbContext("server=some;database=dbname;user id=uid;password=pwd")
+type RestauratorContext() =
+    inherit DbContext("DefaultConnection")
+
+    do Database.SetInitializer(new CreateDatabaseIfNotExists<RestauratorContext>())
 
     [<DefaultValue>] val mutable users : DbSet<User>
     member x.Users with get() = x.users and set v = x.users <- v

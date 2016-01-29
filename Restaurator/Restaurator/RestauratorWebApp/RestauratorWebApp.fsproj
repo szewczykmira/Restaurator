@@ -114,6 +114,7 @@
     <None Include="packages.config" />
     <Compile Include="Models.fs" />
     <Compile Include="FsMvcEntitites.fs" />
+    <Compile Include="ModelRepositories.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.5\Microsoft.FSharp.Targets" Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.5\Microsoft.FSharp.Targets')" />
   <Choose>
