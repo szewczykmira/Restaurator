@@ -1,4 +1,4 @@
-﻿namespace FsWeb.Controllers
+﻿namespace FsWeb.HomeController
 
 open System.Web
 open System.Web.Mvc
