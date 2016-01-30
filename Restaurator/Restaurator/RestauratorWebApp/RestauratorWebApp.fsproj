@@ -109,12 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.fs" />
-    <Compile Include="HomeController.fs" />
     <None Include="App.config" />
     <None Include="packages.config" />
     <Compile Include="Models.fs" />
     <Compile Include="FsMvcEntitites.fs" />
     <Compile Include="ModelRepositories.fs" />
+    <Compile Include="HomeController.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.5\Microsoft.FSharp.Targets" Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.5\Microsoft.FSharp.Targets')" />
   <Choose>
