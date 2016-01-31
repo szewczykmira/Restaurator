@@ -1,6 +1,7 @@
 ﻿namespace FsWeb.HomeController
 
 open System.Web
+open System
 open System.Web.Mvc
 open FsWeb.Models
 open FsWeb.Repositories
@@ -31,4 +32,15 @@ type HomeController(repository : RestaurantRepository) =
 
     member this.Details(id) =
         let res = repository.GetById id
+        let (?<-) (viewData:ViewDataDictionary) (name:string) (value: 'T) = viewData.Add(name, value)
+        let id = Guid.Parse (res.UserId)
+        this.ViewData?Owner <- (repository.GetOwner id).Email
         this.View (res) :> ActionResult
+
+    member this.DisplayOpinion(id : Guid) =
+        let (?<-) (viewData:ViewDataDictionary) (name:string) (value: 'T) = viewData.Add(name, value)
+        this.ViewData?Restaurant <- (repository.GetById id).Name
+        let nId = id.ToString()
+        let model = repository.GetOpinion nId
+        
+        model |> this.View :> ActionResult

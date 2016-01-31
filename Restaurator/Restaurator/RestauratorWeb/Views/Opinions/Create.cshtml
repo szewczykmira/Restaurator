@@ -1,0 +1,100 @@
+﻿@model FsWeb.Models.Opinion
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Restaurator</title>
+    <link rel="stylesheet" href="../../Content/Site.css" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href='@Url.Action("Index", "Home")' class="navbar-brand">Restaurator</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Session["User"] == null)
+                    {
+                        <li><a href='@Url.Action("Login", "Users")'>Log in</a></li>
+                        <li><a href='@Url.Action("Create", "Users")'>Register</a></li>
+                    }
+                    else
+                    {
+                        <li><a href='@Url.Action("Logout", "Users")'>Logout</a></li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="margin-top:100px">
+        <h2 class="page-header">Add comment</h2>
+        <div class="row">
+            <div class="col-lg-6 col-md-10">
+                <div data-role="content">
+                    @using (Html.BeginForm("Create", "Opinions", FormMethod.Post))
+                    {
+
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label asp-for="Score" class="col-md-2 control-label">Score</label>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m=>m.Score)
+                                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Score)</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="col-md-2 control-label">Description</label>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(m => m.Description)
+                                    <span class="text-danger">@Html.ValidationMessageFor(m => m.Description)</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RestaurantId" class="col-md-2 control-label">Restaurant</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(m => m.RestaurantId, (SelectList)ViewData["Restaurants"])
+                                    <span class="text-danger">
+                                        @Html.ValidationMessageFor(m => m.RestaurantId)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UserId" class="col-md-2 control-label">Owner</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(m => m.UserId, (SelectList)ViewData["Users"])
+                                    <span class="text-danger">
+                                        @Html.ValidationMessageFor(m => m.UserId)
+                                    </span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right" id="sub">Create</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <hr />
+        <footer>
+            <p>&copy; 2016 - Deklaracje</p>
+        </footer>
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    
+</body>
+</html>
+
+

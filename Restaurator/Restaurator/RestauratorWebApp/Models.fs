@@ -60,7 +60,8 @@ and Restaurant () =
     [<Display(Name="Address")>]
     member this.Address with get () = adr and set v = adr <- v
 
-    member x.User with get() = user and set v = user <- v
+    abstract member User : User with get, set
+    override x.User with get() = user and set v = user <- v
     member x.UserId with get() = uid and set v = uid <- v
 
     abstract member Opinion : ICollection<Opinion> with get, set
@@ -87,8 +88,10 @@ and Opinion () =
     [<Display(Name="Description")>]
     member this.Description with get() = dscr and set v = dscr <- v
 
-    member x.User with get() = user and set v = user <- v
+    abstract member User : User with get, set
+    override x.User with get() = user and set v = user <- v
     member x.UserId with get() = uid and set v = uid <- v
 
-    member x.Restaurant with get() = rest and set v = rest <- v
+    abstract member Restaurant : Restaurant with get, set
+    override x.Restaurant with get() = rest and set v = rest <- v
     member x.RestaurantId with get() = rid and set v = rid <- v

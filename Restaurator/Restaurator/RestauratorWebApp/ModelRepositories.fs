@@ -45,9 +45,22 @@ type RestaurantRepository() =
                 select g }
         |> Seq.toList
 
+    member x.GetOpinion id = 
+        use context = new RestauratorContext ()
+        query { for g in context.Opinions.Include("User") do
+                where (g.RestaurantId = id)}
+        |> Seq.toList
+
     member x.GetById id =
         use context = new RestauratorContext ()
         let lst = query { for g in context.Restaurants do
+                            where (g.Id = id)}
+                        |> Seq.toList
+        lst.Head
+
+    member x.GetOwner id =
+        use context = new RestauratorContext ()
+        let lst = query { for g in context.Users do
                             where (g.Id = id)}
                         |> Seq.toList
         lst.Head
@@ -63,4 +76,30 @@ type OpinionRepository() =
         use context = new RestauratorContext ()
         context.Opinions.Add elem |> ignore;
         context.SaveChanges() |> ignore
+
+    member x.GetUsers () = 
+        use context = new RestauratorContext ()
+        query { for g in context.Users do
+                select g }
+        |> Seq.toList
+
+    member x.GetRestaurants () = 
+        use context = new RestauratorContext ()
+        query { for g in context.Restaurants do
+                select g }
+        |> Seq.toList
+
+    member x.GetUser id =
+        use context = new RestauratorContext ()
+        let lst = query { for g in context.Users do
+                            where (g.Id = id)}
+                        |> Seq.toList
+        lst.Head
+
+    member x.GetRestaurant id =
+        use context = new RestauratorContext ()
+        let lst = query { for g in context.Restaurants do
+                            where (g.Id = id)}
+                        |> Seq.toList
+        lst.Head
 
