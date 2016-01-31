@@ -6,6 +6,10 @@ type UserRepository() =
         query { for g in context.Users do
                 select g }
         |> Seq.toList
+    member x.Add elem =
+        use context = new RestauratorContext ()
+        context.Users.Add elem |> ignore;
+        context.SaveChanges() |> ignore
 
 type RestaurantRepository() =
     member x.GetAll () = 

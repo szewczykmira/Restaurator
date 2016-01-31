@@ -5,6 +5,7 @@ open System.Web.Mvc
 open FsWeb.Models
 open FsWeb.Repositories
 
+
 [<HandleError>]
 type UsersController(repository : UserRepository) =
     inherit Controller()
@@ -18,6 +19,6 @@ type UsersController(repository : UserRepository) =
     member this.Create(user:User):ActionResult =
         match base.ModelState.IsValid with
         | false -> upcast this.View user
-        | true -> upcast base.RedirectToAction("Index")
+        | true -> repository.Add user; upcast base.RedirectToAction("Index") 
 
 

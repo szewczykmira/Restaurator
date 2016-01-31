@@ -36,3 +36,5 @@ E:\Git\Restaurator\Restaurator\Restaurator\RestauratorWeb\bin\FSharp.Core.xml
 E:\Git\Restaurator\Restaurator\Restaurator\RestauratorWeb\obj\Debug\RestauratorWeb.csprojResolveAssemblyReference.cache
 E:\Git\Restaurator\Restaurator\Restaurator\RestauratorWeb\obj\Debug\RestauratorWeb.dll
 E:\Git\Restaurator\Restaurator\Restaurator\RestauratorWeb\obj\Debug\RestauratorWeb.pdb
+E:\Git\Restaurator\Restaurator\Restaurator\RestauratorWeb\bin\EntityFramework.SqlServer.dll
+E:\Git\Restaurator\Restaurator\Restaurator\RestauratorWeb\bin\EntityFramework.SqlServer.xml
