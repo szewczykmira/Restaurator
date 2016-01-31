@@ -21,14 +21,12 @@ type User () =
 
     [<Required>]
     [<EmailAddress>]
-    [<DataType(DataType.EmailAddress)>]
     [<Display(Name = "Email")>]
     member x.Email with get() = email and set e = email <- e
 
 
     [<Required>]
-    [<MinLength(10)>]
-    [<DataType(DataType.Password)>]
+    [<MinLength(10, ErrorMessage="Password must have at least 10 chars")>]
     [<Display(Name = "Password")>]
     member x.Password with get () = pswd and set p = pswd <- p
 
