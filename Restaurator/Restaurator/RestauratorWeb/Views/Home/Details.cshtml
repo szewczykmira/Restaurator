@@ -1,0 +1,60 @@
+﻿
+<DOCTYPE html>
+
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Restaurator</title>
+        <link rel="stylesheet" href="../../Content/Site.css" />
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href='@Url.Action("Index", "Home")' class="navbar navbar-brand">Restaurator</a>
+                    </div>
+                    <div>
+                        <ul class="nav navbar-nav">
+                            @if (Session["User"] == null)
+                            {
+                                <li><a href='@Url.Action("Login", "Users")'>Log in</a></li>
+                                <li><a href='@Url.Action("Create", "Users")'>Register</a></li>
+                            }
+                            else
+                            {
+                                <li><a href='@Url.Action("Logout", "Users")'>Logout</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container body-content" style="margin-top:100px">
+                <h2 class="page-header">Restaurants</h2>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => x.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => x.Address)</td>
+                                <td>@Html.DisplayFor(modelItem => x.Description)</td>
+                                <td>
+                                    <a href='@Url.Action("Details", "Home", new { id = x.Id})' class="btn btn-default">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </body>
+</html>

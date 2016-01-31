@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<FsWeb.Models.Restaurant>
+
+<DOCTYPE html>
 
 <html>
 <head>
@@ -16,12 +18,45 @@
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
-                        <li><a>Log in</a></li>
+                        @if (Session["User"] == null) {
+                        <li><a href='@Url.Action("Login", "Users")'>Log in</a></li>
                         <li><a href='@Url.Action("Create", "Users")'>Register</a></li>
+                        }
+                        else
+                        {
+                            <li><a href='@Url.Action("Logout", "Users")'>Logout</a></li>
+                        }
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="container body-content" style="margin-top:100px">
+            <h2 class="page-header">Restaurants</h2>
+            <div class="pull-right">
+                <a href='@Url.Action("Create", "Home")' class="btn btn-primary">Add Restaurant</a>
+            </div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model) {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => x.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => x.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => x.Description)</td>
+                            <td>
+                                <a href='@Url.Action("Details", "Home", new { id = x.Id})' class="btn btn-default">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 </body>
 </html>

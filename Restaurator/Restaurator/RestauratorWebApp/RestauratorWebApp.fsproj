@@ -114,6 +114,8 @@
     <Compile Include="Models.fs" />
     <Compile Include="FsMvcEntitites.fs" />
     <Compile Include="ModelRepositories.fs" />
+    <Compile Include="Collections.fs" />
+    <Compile Include="AuthorizedActionFilter.fs" />
     <Compile Include="HomeController.fs" />
     <Compile Include="UsersController.fs" />
   </ItemGroup>

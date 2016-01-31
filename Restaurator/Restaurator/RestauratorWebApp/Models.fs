@@ -41,7 +41,7 @@ and Restaurant () =
     let mutable name = ""
     let mutable dscr = ""
     let mutable adr = ""
-    let mutable uid = 0
+    let mutable uid = ""
     let mutable user = Unchecked.defaultof<User>
     let mutable opi = Unchecked.defaultof<ICollection<Opinion>>
 
@@ -69,11 +69,10 @@ and Restaurant () =
 
 and Opinion () =
     let mutable scr = 1
-    let mutable uid =  1
+    let mutable uid =  ""
     let mutable dscr = ""
-    let mutable uid = 0
     let mutable user = Unchecked.defaultof<User>
-    let mutable rid = 0
+    let mutable rid = ""
     let mutable rest = Unchecked.defaultof<Restaurant>
 
     [<Key>] 
